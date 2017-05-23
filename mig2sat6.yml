@@ -70,3 +70,8 @@
         enabled: yes
       tags:
         - puppet
+
+    - name: Create Puppet Certificate Signing Request
+      shell: puppet agent -t --server {{ sat6server }}
+      tags:
+        - puppet
