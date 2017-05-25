@@ -11,9 +11,8 @@
         state: absent
 
     - name: Ensure katello-ca-consumer-latest is Installed
-      yum:
-        name: http://{{ sat6server }}/pub/katello-ca-consumer-latest.noarch.rpm
-        state: latest
+      shell: rpm -Uvh http://{{ sat6server }}/pub/katello-ca-consumer-latest.noarch.rpm
+      ignore_errors: true
 
     - name: Remove RHN System ID
       file:
@@ -24,7 +23,7 @@
       redhat_subscription:
         state: present
         autosubscribe: true
-        activationkey: "{{ activation key }}"
+        activationkey: "{{ activationkey }}"
         org_id: "{{ organization }}"
 
     - name: Ensure Repositories are Enabled
