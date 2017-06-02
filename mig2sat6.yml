@@ -7,9 +7,11 @@
   tasks:
     - name: Ensure RHN Tools are removed
       yum:
-        name: yum-rhn-plugin
+        name: "{{ item }}"
         state: absent
-
+      with_items:
+        - yum-rhn-plugin
+        - osad
     - name: Ensure katello-ca-consumer-latest is Installed
       shell: rpm -Uvh http://{{ sat6server }}/pub/katello-ca-consumer-latest.noarch.rpm
       ignore_errors: true
@@ -47,6 +49,8 @@
         state: present
       with_file:
         - id_rsa_foreman_proxy.pub
+      tags:
+        - ssh-keys
 
     - name: Ensure Puppet Agent is installed
       yum:
