@@ -12,9 +12,11 @@
       with_items:
         - yum-rhn-plugin
         - osad
+
     - name: Ensure katello-ca-consumer-latest is Installed
-      shell: rpm -Uvh http://{{ sat6server }}/pub/katello-ca-consumer-latest.noarch.rpm
-      ignore_errors: true
+      yum: 
+        name: http://{{ sat6server }}/pub/katello-ca-consumer-latest.noarch.rpm
+        state: present
 
     - name: Remove RHN System ID
       file:
