@@ -28,9 +28,6 @@
         activationkey: "{{ activationkey }}"
         org_id: "{{ organization }}"
 
-    - name: Ensure Repositories are Enabled
-      shell: subscription-manager repos --enable="*"
-
     - name: Ensure katello-agent is Installed
       yum:
         name: katello-agent
