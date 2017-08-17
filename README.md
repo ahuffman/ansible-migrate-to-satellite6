@@ -6,6 +6,13 @@ To provide a method to painlessly move Satellite 5 clients to Satellite 6 by mak
 There's a few ways you could use this playbook.  
 ### Modifying the variables  
 If you would like to update the required variables `sat6server`,`activationkey`, and `organization` simply edit the playbook under the 'vars' section and plug-in the valid values for your environment.  You will also want to change `hosts: all` to a specific group.  
+
+### Enabling Specific Repositories (Post Registration)
+Modify the variable `enable_repos` with a list of repositories you would like to enable.  This is optional, and the task will be skipped if the list remains empty: `enable_repos: []`.
+enable_repos:
+  - repo1
+  - repo2
+  - repo3
   
 You could then run:  
 ansible-playbook mig2sat6.yml -u root -k
