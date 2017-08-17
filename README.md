@@ -8,7 +8,8 @@ There's a few ways you could use this playbook.
 If you would like to update the required variables `sat6server`,`activationkey`, and `organization` simply edit the playbook under the 'vars' section and plug-in the valid values for your environment.  You will also want to change `hosts: all` to a specific group.  
 
 ### Enabling Specific Repositories (Post Registration)
-Modify the variable `enable_repos` with a list of repositories you would like to enable.  This is optional, and the task will be skipped if the list remains empty: `enable_repos: []`.
+Modify the variable `enable_repos` with a list of repositories you would like to enable.  This is optional, and the task will be skipped if the list remains empty: `enable_repos: []`.  
+
     enable_repos:
       - repo1
       - repo2
